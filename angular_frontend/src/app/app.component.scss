@@ -1,0 +1,8 @@
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;margin:1rem;background:var(--surface)}
+.brand{display:flex;gap:.6rem;align-items:center}
+.logo{font-size:1.4rem}
+.title{font-weight:700}
+.layout{display:grid;grid-template-columns:1fr 320px;gap:1rem;padding:0 1rem 1rem}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.side{order:-1}}
+.game{padding:0;overflow:hidden}
+.side{padding:1rem}

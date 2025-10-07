@@ -1,0 +1,9 @@
+<div class="card" style="padding:1rem">
+  <h3 style="margin-top:0">Level</h3>
+  <div style="display:flex;gap:.5rem;align-items:center">
+    <input type="range" min="1" max="3" [(ngModel)]="level"/>
+    <span>{{level}}</span>
+    <button class="btn" (click)="apply()">Set</button>
+  </div>
+  <p style="font-size:.9rem;color:#374151;margin:.5rem 0 0">Use Space or ↑ to jump. Avoid obstacles!</p>
+</div>

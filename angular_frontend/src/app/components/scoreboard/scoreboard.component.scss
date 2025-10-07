@@ -1,0 +1,4 @@
+.sheet{position:relative;padding:1rem;border-radius:.75rem;background:var(--surface)}
+.sheet__header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem}
+.list{margin:0;padding:0;list-style:none;display:grid;gap:.5rem}
+.list li{display:grid;grid-template-columns:40px 1fr auto;gap:.5rem;padding:.5rem .75rem;background:#f3f4f6;border-radius:.5rem}

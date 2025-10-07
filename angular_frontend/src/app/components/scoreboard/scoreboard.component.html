@@ -1,0 +1,13 @@
+<div class="sheet" *ngIf="show" aria-live="polite">
+  <div class="sheet__header">
+    <h3>High Scores</h3>
+    <button class="btn" (click)="close.emit()">Close</button>
+  </div>
+  <ol class="list">
+    <li *ngFor="let s of scores; index as i">
+      <span>#{{ i + 1 }}</span>
+      <span>{{ s.initials }}</span>
+      <strong>{{ s.score }}</strong>
+    </li>
+  </ol>
+</div>

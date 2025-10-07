@@ -1,3 +1,19 @@
-<div class="container">
-  <h1>{{ title }}</h1>
-</div>
+<header class="topbar card">
+  <div class="brand">
+    <span class="logo">🎪</span>
+    <span class="title">{{ title }}</span>
+  </div>
+  <div class="controls">
+    <button class="btn" (click)="toggleScores()">High Scores</button>
+  </div>
+</header>
+
+<main class="layout">
+  <section class="game card">
+    <app-game-canvas (scoreChange)="onScore($event)" (livesChange)="onLives($event)"></app-game-canvas>
+  </section>
+  <aside class="side card">
+    <app-level-selector (levelSelected)="onLevel($event)"></app-level-selector>
+    <app-scoreboard [scores]="scores" [show]="showScores" (close)="showScores=false"></app-scoreboard>
+  </aside>
+</main>
