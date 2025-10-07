@@ -51,6 +51,15 @@ export class AppComponent {
   }
 
   // PUBLIC_INTERFACE
+  resetGame() {
+    /** Trigger a game reset through custom event */
+    const g: any = typeof globalThis !== 'undefined' ? (globalThis as any) : undefined;
+    if (g && g.document && typeof g.CustomEvent !== 'undefined') {
+      g.document.dispatchEvent(new g.CustomEvent('game:reset'));
+    }
+  }
+
+  // PUBLIC_INTERFACE
   onLevel(level: number) {
     /** Dispatch a level change event to the game engine (decoupled) */
     const g: any = typeof globalThis !== 'undefined' ? (globalThis as any) : undefined;

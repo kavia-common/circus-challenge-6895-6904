@@ -1,1 +1,25 @@
-<canvas #canvas class="game-canvas" tabindex="0" aria-label="Circus Challenge canvas" aria-description="Press Space or Arrow Up to jump. Avoid obstacles to increase your score."></canvas>
+<div class="game-container">
+  <div class="game-container">
+  <canvas #canvas class="game-canvas" tabindex="0" aria-label="Circus Challenge canvas" aria-description="Press Space or Arrow Up to jump. Avoid obstacles to increase your score."></canvas>
+  <div *ngIf="isGameOver" class="game-over" aria-live="polite">
+    <div class="game-over__content">
+      <h2>Game Over!</h2>
+      <p>Final Score: {{finalScore}}</p>
+      <div class="game-over__actions">
+        <button class="btn" (click)="resetGame()">Try Again</button>
+      </div>
+      <button class="btn" (click)="resetGame()">Reset Game</button>
+    </div>
+  </div>
+</div>
+  <div *ngIf="isGameOver" class="game-over" aria-live="polite">
+    <div class="game-over__content">
+      <h2>Game Over!</h2>
+      <p>Final Score: {{finalScore}}</p>
+      <div class="game-over__actions">
+        <button class="btn" (click)="resetGame()">Try Again</button>
+      </div>
+      <button class="btn" (click)="resetGame()">Reset Game</button>
+    </div>
+  </div>
+</div>

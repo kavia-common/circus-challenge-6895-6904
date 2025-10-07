@@ -43,7 +43,24 @@ export class GameEngineService {
 
   private keyset = new Set<string>();
 
-  constructor(private zone: NgZone) {}
+  constructor(private zone: NgZone) {
+    const g: any = typeof globalThis !== 'undefined' ? (globalThis as any) : undefined;
+    if (g && g.document) {
+      g.document.addEventListener('game:reset', () => {
+        // Store current callback
+        const currentCallback = (score: number, lives: number) => {
+          // Dispatch events to update UI
+          if (g && g.document && typeof g.CustomEvent !== 'undefined') {
+            g.document.dispatchEvent(new g.CustomEvent('game:scoreChange', { detail: { score } }));
+            g.document.dispatchEvent(new g.CustomEvent('game:livesChange', { detail: { lives } }));
+          }
+        };
+
+        this.reset();
+        this.start(currentCallback, (_l) => {});
+      });
+    }
+  }
 
   // PUBLIC_INTERFACE
   attachCanvas(canvas: any) {
@@ -174,6 +191,8 @@ export class GameEngineService {
   // PUBLIC_INTERFACE
   reset() {
     /** Reset player, score, lives and obstacles */
+    this.stop(); // Ensure animation frame is canceled
+    this.running = false;
     this.player.y = this.ground - this.player.h;
     this.player.vy = 0;
     this.player.onGround = true;
@@ -181,8 +200,15 @@ export class GameEngineService {
     this.score = 0;
     this.lives = 3;
     this.spawnTimer = 0;
+    this.keyset.clear(); // Clear any held keys
     const cfg = this.levelCfgs[this.level] || this.levelCfgs[1];
     this.nextSpawnDelay = this.rand(cfg.spawnMs[0], cfg.spawnMs[1]);
+
+    // Clear canvas if available
+    if (this.ctx) {
+      this.ctx.clearRect(0, 0, this.w, this.h);
+      this.draw(); // Redraw initial state
+    }
   }
 
   private update(dt: number) {

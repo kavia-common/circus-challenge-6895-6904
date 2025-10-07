@@ -1,1 +1,83 @@
-.game-canvas{display:block;width:100%;height:400px;outline:none}
+.game-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+.game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+.game-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  animation: fadeIn 0.3s ease-out;
+  backdrop-filter: blur(2px);
+}
+
+.game-over__content {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease-out;
+  min-width: 280px;
+}
+
+.game-over__content h2 {
+  margin: 0 0 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.game-over__content p {
+  margin: 0 0 1.5rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.game-over__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.game-over__actions .btn {
+  min-width: 120px;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.game-over__actions .btn:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
