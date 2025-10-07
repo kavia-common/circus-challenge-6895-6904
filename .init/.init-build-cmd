@@ -1,0 +1,4 @@
+{
+    "command": "npm install --legacy-peer-deps && npm run build",
+    "working_directory": "/tmp/kavia/workspace/code-generation/circus-challenge-6895-6904/angular_frontend"
+}
